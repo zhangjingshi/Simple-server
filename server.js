@@ -1,4 +1,4 @@
-ar http = require('http')
+var http = require('http')
 var fs = require('fs')
 var url = require('url')
 var port = process.argv[2]
@@ -19,30 +19,29 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('HTTP 路径为/n' + path)
+  console.log('HTTP 路径为\n' + path)
   if(path == '/style'){
-      response.setHeader('Content-Type', 'text/style ; charset=utf-8')
-      response.write('baby{background-color; #black;}h1{color:green;}')
+      response.setHeader('Content-Type', 'text/css; charset=utf-8')
+      response.write('boby{background-color: #black;}h1{color:green;}')
       response.end()
-  }else if(path == 'script'){
-     response.setHeader('Content-Type', 'text/style ; charset=utf-8')
+  }else if(path == '/script'){
+     response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
      response.write('alert("弹出JS BBBBBBBBBBBBBBBBB")')
      response.end()
-  }else if(path == 'index'){
-     response.setHeader('Content-Type', 'text/style ; charset=utf-8')
-     response.write('<！DOCTYPE>/n<html>' +
+  }else if(path == '/index'){
+     response.setHeader('Content-Type', 'text/html; charset=utf-8')
+     response.write('<!DOCTYPE>\n<html>' +
                      '<head><link rel="stylesheet" href= "/style">' + 
-                     '</head><bady>' +
+                     '</head><body>' +
                      '<h1>还是得多学多看哦 </h1> ' + 
                      '<script src="/script"></script>' + 
-                     '</bady></html>')
+                     '</body></html>')
      response.end()
-  }eles{
+  }else{
       response.statusCode = 404
       response.end()
   } 
-
-
+  
 
 
   /******** 代码结束，下面不要看 ************/
